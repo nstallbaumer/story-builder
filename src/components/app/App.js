@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../scss/app.scss';
+import Editor from '../editor/Editor';
 
 const App = ({ description }) => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.container__header}>React Attach</h1>
-      <h2>{description}</h2>
+    <div>
+      <Editor/>
     </div>
   );
 }
