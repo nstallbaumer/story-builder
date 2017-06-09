@@ -9,7 +9,6 @@ import {
 } from 'react-mobiledoc-editor';
 
 import Renderer from '../renderer/Renderer';
-import Formatter from '../formatter/Formatter';
 import {
   atoms,
   cards,
