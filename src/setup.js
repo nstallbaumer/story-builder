@@ -1,5 +1,3 @@
-import React from 'react';
-
 import KittenHandler from './components/cards/KittenHandler.js';
 import KittenCard from './components/cards/KittenCard.js';
 
@@ -21,7 +19,7 @@ export const cards = {
   ],
 
   components: [
-    KittenHandler
+    { componentName: KittenHandler, key: 'kitten' }
   ]
 };
 

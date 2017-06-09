@@ -17,31 +17,33 @@ import {
   markups
 } from '../../setup.js';
 
-export default class StoryBuilder extends Component {
-  constructor(props) {
-    super(props);
-  }
+const StoryBuilder = () => (
+  <Container
+    cards={cards.meta}
+    atoms={atoms.meta}
+  >
+    {sections.map(tag => (
+      <SectionButton
+        key={tag}
+        tag={tag}
+      />
+    ))}
 
-  render() {
-    return (
-      <Container
-        cards={cards.meta}
-        atoms={atoms.meta}
-      >
-        {sections.map(tag => (
-          <SectionButton tag={tag} />
-        ))}
+    {markups.map(tag => (
+      <MarkupButton
+        key={tag}
+        tag={tag}
+      />
+    ))}
 
-        {markups.map(tag => (
-          <MarkupButton tag={tag} />
-        ))}
+    {cards.components.map(card => (
+      React.createElement(card.componentName, {
+        key: card.key
+      }, null)
+    ))}
 
-        {cards.components.map(card => (
-          React.createElement(card, {}, null)
-        ))}
+    <Editor/>
+  </Container>
+);
 
-        <Editor/>
-      </Container>
-    );
-  }
-}
+export default StoryBuilder;
