@@ -1,7 +1,7 @@
 {
   "name": "story-builder",
   "version": "0.1.0",
-  "description": "",
+  "description": "A Mobiledoc-based story-creation tool",
   "author": "Andrew Gibson <agibson@texastribune.org>",
   "main": [],
   "repository": {
