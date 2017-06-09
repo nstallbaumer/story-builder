@@ -1,22 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
 
 import KittenHandler from './components/cards/KittenHandler.js';
-import KittenCard from './components/cards/Kitten.js';
+import KittenCard from './components/cards/KittenCard.js';
 
-export const formatters = [
-  {
-    name: 'heading1',
-    element: 'h1',
-    formatType: 'section'
-  },
+export const sections = [
+  'h1',
+  'h2'
+];
 
-  {
-    name: 'bold',
-    element: 'strong',
-    formatType: 'markup'
-  }
+
+export const markups = [
+  'strong',
+  'em'
 ];
 
 

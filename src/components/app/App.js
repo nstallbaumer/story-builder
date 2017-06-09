@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Editor from '../editor/Editor';
+import StoryBuilder from '../storybuilder/StoryBuilder';
 
 const App = ({ description }) => {
   return (
     <div>
-      <Editor/>
+      <StoryBuilder/>
     </div>
   );
 }
