@@ -27,10 +27,7 @@ export default class StoryBuilder extends Component {
       <Container
         cards={cards.meta}
         atoms={atoms.meta}
-        placeholder={'Enter your text here'}
       >
-        <Editor/>
-
         {sections.map(tag => (
           <SectionButton tag={tag} />
         ))}
@@ -38,6 +35,12 @@ export default class StoryBuilder extends Component {
         {markups.map(tag => (
           <MarkupButton tag={tag} />
         ))}
+
+        {cards.components.map(card => (
+          React.createElement(card, {}, null)
+        ))}
+
+        <Editor/>
       </Container>
     );
   }
