@@ -1,4 +1,4 @@
-import KittenHandler, { KittenCard } from './components/cards/Kitten.js';
+import GalleryCard, { GalleryButton } from './components/cards/Gallery.js';
 
 export const sections = [
   'h1',
@@ -13,15 +13,12 @@ export const markups = [
 
 
 export const cards = {
-  meta: [
-    KittenCard
+  handlerComponents: [
+    GalleryCard
   ],
 
-  components: [
-    {
-      componentName: KittenHandler,
-      key: 'kitten'
-    }
+  buttonComponents: [
+    GalleryButton
   ]
 };
 

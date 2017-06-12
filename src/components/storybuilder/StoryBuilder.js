@@ -18,7 +18,7 @@ import {
 
 const StoryBuilder = () => (
   <Container
-    cards={cards.meta}
+    cards={cards.handlerComponents}
     atoms={atoms.meta}
   >
     {sections.map(tag => (
@@ -35,9 +35,9 @@ const StoryBuilder = () => (
       />
     ))}
 
-    {cards.components.map(card => (
-      React.createElement(card.componentName, {
-        key: card.key
+    {cards.buttonComponents.map((component, index) => (
+      React.createElement(component, {
+        key: index
       }, null)
     ))}
 
