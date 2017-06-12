@@ -1,5 +1,4 @@
-import KittenHandler from './components/cards/KittenHandler.js';
-import KittenCard from './components/cards/KittenCard.js';
+import KittenHandler, { KittenCard } from './components/cards/Kitten.js';
 
 export const sections = [
   'h1',
@@ -19,7 +18,10 @@ export const cards = {
   ],
 
   components: [
-    { componentName: KittenHandler, key: 'kitten' }
+    {
+      componentName: KittenHandler,
+      key: 'kitten'
+    }
   ]
 };
 

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Mobiledoc from 'mobiledoc-kit';
+
+import Renderer from '../renderer/Renderer';
 import {
   Container,
   Editor,
   MarkupButton,
   SectionButton
 } from 'react-mobiledoc-editor';
-
-import Renderer from '../renderer/Renderer';
 import {
   atoms,
   cards,
