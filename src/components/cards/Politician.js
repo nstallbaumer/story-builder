@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { classToDOMCard } from 'react-mobiledoc-editor';
 
+import styles from './styles.scss';
+
 class Politician extends Component {
   constructor(props) {
     super(props);
@@ -46,18 +48,31 @@ class Politician extends Component {
             value={this.state.id}
             onChange={this.handleChange.bind(this)}
           />
-          <button onClick={this.fetchPolitician.bind(this)}>Fetch</button>
-          <button onClick={this.savePolitician.bind(this)}>Save</button>
+
+          <button
+            onClick={this.fetchPolitician.bind(this)}
+            className={styles.cardButton}
+          >
+            Fetch
+          </button>
+
+          <button
+            onClick={this.savePolitician.bind(this)}
+            className={styles.cardButton}
+          >
+            Save
+          </button>
         </div>
       );
     } else {
       const onClick = isInEditor ? edit : null;
       return (
         <div>
-          <h1>{this.state.politician.name}</h1>
-          <h2>{this.state.politician.office}</h2>
-          <img src={this.state.politician.headshot} />
-          {isInEditor && <button onClick={onClick}>Edit politician</button>}
+          <h1 className={styles.politician}>
+            {this.state.politician.name}, {this.state.politician.office}
+          </h1>
+          <img className={styles.headshot} src={this.state.politician.headshot} />
+          {isInEditor && <button onClick={onClick} className={styles.cardButton}>Edit politician</button>}
         </div>
       );
     }
@@ -85,6 +100,7 @@ export class PoliticianButton extends Component {
     return (
       <button
         onClick={this.handleClick.bind(this)}
+        className={this.props.className}
       >
         Insert politician
       </button>

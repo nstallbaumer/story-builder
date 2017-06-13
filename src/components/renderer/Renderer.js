@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 const DOMRenderer = require('mobiledoc-dom-renderer').default;
 
+import styles from './styles.scss';
+
 export default class Renderer extends Component {
   fragmentToText(frag) {
     const div = document.createElement('div');
@@ -28,8 +30,8 @@ export default class Renderer extends Component {
     return (
       <div>
         <button onClick={this.handleClick.bind(this)}>Render!</button>
-        <div ref={(html) => { this.html = html; }}></div>
-        <div ref={(data) => { this.data = data; }}></div>
+        <div className={styles.section} ref={(html) => { this.html = html; }}></div>
+        <div className={styles.section} ref={(data) => { this.data = data; }}></div>
       </div>
     );
   }

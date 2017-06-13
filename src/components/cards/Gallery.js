@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import update from 'react-addons-update';
 import { classToDOMCard } from 'react-mobiledoc-editor';
 
+import styles from './styles.scss';
+
 /**
   Handles the adding/deleting of
   gallery items and the subsequent markup
@@ -58,8 +60,20 @@ class Gallery extends Component {
               />
             ))}
           </ul>
-          <button onClick={this.addImage.bind(this)}>Add image</button>
-          <button onClick={this.saveGallery.bind(this)}>Save</button>
+
+          <button
+            onClick={this.addImage.bind(this)}
+            className={styles.cardButton}
+          >
+            Add image
+          </button>
+
+          <button
+            onClick={this.saveGallery.bind(this)}
+            className={styles.cardButton}
+          >
+            Save
+          </button>
         </div>
       );
     } else {
@@ -68,12 +82,12 @@ class Gallery extends Component {
         <div>
           <ul>
             {payload.images.map(image => (
-              <li>
+              <li className={styles.galleryItem}>
                 <img src={image.value} />
               </li>
             ))}
           </ul>
-          {isInEditor && <button onClick={onClick}>Edit gallery</button>}
+          {isInEditor && <button onClick={onClick} className={styles.cardButton}>Edit gallery</button>}
         </div>
       );
     }
@@ -127,6 +141,7 @@ export class GalleryButton extends Component {
     return (
       <button
         onClick={this.handleClick.bind(this)}
+        className={this.props.className}
       >
         Insert gallery
       </button>
