@@ -44,6 +44,11 @@ const StoryBuilder = () => (
     ))}
 
     <Editor/>
+
+    <Renderer
+      cards={cards.handlerComponents}
+      atoms={atoms.meta}
+    />
   </Container>
 );
 

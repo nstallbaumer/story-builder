@@ -1,16 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Mobiledoc from 'mobiledoc-kit';
+const DOMRenderer = require('mobiledoc-dom-renderer').default;
 
 export default class Renderer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  fragmentToText(frag) {
+    const div = document.createElement('div');
+    div.appendChild(frag.cloneNode(true));
+    return div.innerHTML;
+  }
+
+  handleClick() {
+    const { cards, atoms } = this.props;
+    const renderer = new DOMRenderer({
+      cards,
+      atoms
+    });
+
+    const mobiledoc = this.context.editor.serialize();
+    const rendered = renderer.render(mobiledoc);
+    const markupAsText = this.fragmentToText(rendered.result);
+
+    this.html.textContent = markupAsText;
+    this.data.textContent = JSON.stringify(mobiledoc);
   }
 
   render() {
     return (
-      <div></div>
+      <div>
+        <button onClick={this.handleClick.bind(this)}>Render!</button>
+        <div ref={(html) => { this.html = html; }}></div>
+        <div ref={(data) => { this.data = data; }}></div>
+      </div>
     );
   }
 }
+
+Renderer.contextTypes = {
+  editor: PropTypes.object
+};
