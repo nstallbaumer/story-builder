@@ -40,6 +40,7 @@
     "prop-types": "^15.5.10",
     "pug": "^2.0.0-rc.2",
     "react": "^15.5.4",
+    "react-addons-update": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-mobiledoc-editor": "^0.1.0",
     "react-modal": "^1.8.1"

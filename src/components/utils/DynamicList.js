@@ -1,46 +1,44 @@
 import React, { Component } from 'react';
+import update from 'react-addons-update';
 
 export default class DynamicList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      items: []
-    };
-  }
-
   handleAdd() {
-    const newItem = { value: null };
-
-    this.setState(prevState => ({
-      items: prevState.items.concat([newItem])
-    }));
+    this.props.addImage();
   }
 
   handleSave() {
     const paredList = this.removeEmptyItems();
-    this.props.insertGallery(paredList);
+    this.props.saveGallery(paredList);
+  }
+
+  updateValue(index, newValue) {
+    this.setState({
+      items: update(this.state.items, {
+        [index]: {
+          value: {
+            $set: newValue
+          }
+        }
+      })
+    });
   }
 
   removeEmptyItems() {
-    /*return this.state.items.filter(item => (
+    return this.state.items.filter(item => (
       item.value !== '' && item.value !== null
-    ));*/
-    return [
-      { value: 'foo' },
-      { value: 'foo' },
-      { value: 'foo' }
-    ];
+    ));
   }
 
   render() {
     return (
       <div>
         <ul>
-          {this.state.items.map((item, index) => (
+          {this.props.items.map((item, index) => (
             <ListItem
               key={index}
+              index={index}
               item={item}
+              updateValue={this.updateValue.bind(this)}
             />
           ))}
         </ul>
@@ -51,7 +49,29 @@ export default class DynamicList extends Component {
   }
 }
 
+
 class ListItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: ''
+    };
+  }
+
+  handleChange(event) {
+    this.setState({
+      value: event.target.value
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.value !== prevState.value) {
+      const { index, updateValue } = this.props;
+      updateValue(index, this.state.value);
+    }
+  }
+
   render() {
     const { value } = this.props.item;
 
@@ -60,7 +80,8 @@ class ListItem extends Component {
         <input
           type="text"
           placeholder="Enter full image URL"
-          defaultValue={value || ''}
+          value={this.state.value}
+          onChange={this.handleChange.bind(this)}
         />
       </li>
     );
