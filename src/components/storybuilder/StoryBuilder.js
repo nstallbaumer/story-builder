@@ -16,6 +16,8 @@ import {
   markups
 } from '../../setup.js';
 
+import 'mobiledoc-kit/dist/css/mobiledoc-kit.css';
+
 const StoryBuilder = () => (
   <Container
     cards={cards.handlerComponents}
