@@ -1,4 +1,5 @@
 import GalleryCard, { GalleryButton } from './components/cards/Gallery.js';
+import PoliticianCard, { PoliticianButton } from './components/cards/Politician.js';
 
 export const sections = [
   'h1',
@@ -14,11 +15,13 @@ export const markups = [
 
 export const cards = {
   handlerComponents: [
-    GalleryCard
+    GalleryCard,
+    PoliticianCard
   ],
 
   buttonComponents: [
-    GalleryButton
+    GalleryButton,
+    PoliticianButton
   ]
 };
 

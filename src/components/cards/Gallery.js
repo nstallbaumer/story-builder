@@ -12,7 +12,7 @@ class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: this.props.payload.images || []
+      images: this.props.payload.images
     };
   }
 
@@ -73,7 +73,7 @@ class Gallery extends Component {
               </li>
             ))}
           </ul>
-          {isInEditor && <button onClick={onClick}>Edit</button>}
+          {isInEditor && <button onClick={onClick}>Edit gallery</button>}
         </div>
       );
     }
